@@ -1,20 +1,20 @@
 {
-  "id": "dev.replugged.PluginTemplate",
-  "name": "Plugin Template",
-  "description": "A plugin template",
+  "id": "ee.lys.LinkImprover",
+  "name": "Link Improver",
+  "description": "Improves various links by shortening them, stripping unnecessary data, and more.",
   "author": {
-    "name": "replugged",
-    "discordID": "1000992611840049192",
-    "github": "replugged-org"
+    "name": "Lyssieth",
+    "discordID": "145399954574147584",
+    "github": "lyssieth"
   },
   "version": "1.0.0",
   "updater": {
     "type": "github",
-    "id": "replugged-org/plugin-template"
+    "id": "lyssieth/link-improver"
   },
   "license": "MIT",
   "type": "replugged-plugin",
   "renderer": "src/index.ts",
-  "source": "https://github.com/replugged-org/plugin-template",
-  "image": ["https://i.imgur.com/14CNs3a.png?CHANGE-THIS-URL"]
+  "source": "https://github.com/lyssieth/link-improver",
+  "image": ["https://raw.githubusercontent.com/lyssieth/link-improver/main/assets/preview.png"]
 }
