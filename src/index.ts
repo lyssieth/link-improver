@@ -5,7 +5,7 @@ const inject = new Injector();
 const logger = Logger.plugin("LinkImprover");
 
 export async function start(): Promise<void> {
-  inject.instead(common.messages, "sendMessage", async (args, fn) => {
+  inject.before(common.messages, "sendMessage", (args) => {
     let { content } = args[1];
 
     FINDERS.forEach((finder, name) => {
@@ -15,7 +15,7 @@ export async function start(): Promise<void> {
 
     args[1].content = content;
 
-    return fn(...args);
+    return args;
   });
 }
 

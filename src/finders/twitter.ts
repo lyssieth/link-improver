@@ -7,7 +7,7 @@ import { Finder } from "../link_finder";
 export default class TwitterFinder implements Finder {
   public findAndReplace(text: string): string {
     return text.replace(
-      /(:?https?:\/\/(?:www\.)?(:?twitter|x)\.com\/([a-zA-Z0-9_]+)\/status\/([0-9]+)\/?)(?:\?(?:(?:s=\d+$)|(?:s=\d+&t=\w+?$)))?/g,
+      /(?:https?:\/\/(?:www\.)?(?:twitter|x)\.com\/([a-zA-Z0-9_]+)\/status\/([0-9]+)\/?)(?:\?(?:(?:s=\d+$)|(?:s=\d+&t=\w+?$)))?/g,
       "https://vxtwitter.com/$1/status/$2/",
     );
   }
