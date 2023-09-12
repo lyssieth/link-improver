@@ -20,8 +20,8 @@
     "lint:fix": "pnpm run prettier:fix && pnpm run eslint:fix"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Lyssieth <lys@lys.ee>",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.6.0",
     "@types/react": "^18.2.21",
