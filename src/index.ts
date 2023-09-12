@@ -1,8 +1,18 @@
-import { Injector, common, settings } from "replugged";
+import { Injector, Logger, common, settings } from "replugged";
 import manifest from "../manifest.json";
 export { manifest };
 
 const inject = new Injector();
+
+export const PLUGIN_ID = manifest.id;
+export const LOGGER = Logger.plugin(PLUGIN_ID);
+
+export function createReplacement(regex: string, replacement: string): Replacement {
+  return {
+    regex: new RegExp(regex, "g"),
+    replacement,
+  };
+}
 
 export interface Replacement {
   regex: RegExp;
@@ -17,7 +27,7 @@ export const defaultSettings = {
   replacements: [
     {
       regex:
-        /(?:https?:\/\/(?:www\.)?(?:twitter|x)\.com\/([a-zA-Z0-9_]+)\/status\/([0-9]+)\/?)(?:\?(?:(?:s=\d+$)|(?:s=\d+&t=\w+?$)))?/g,
+        /(?:https?:\/\/(?:www\.)?(?:twitter|x)\.com\/([a-zA-Z0-9_]+)\/status\/([0-9]+)\/?)(?:\?(?:(?:s=\d+)|(?:s=\d+&t=\w+?))\s?)?/g,
       replacement: "https://vxtwitter.com/$1/status/$2/",
     },
     {
@@ -28,7 +38,7 @@ export const defaultSettings = {
 } satisfies LinkSettings;
 
 export const cfg = await settings.init<LinkSettings, keyof typeof defaultSettings>(
-  manifest.id,
+  PLUGIN_ID,
   defaultSettings,
 );
 
