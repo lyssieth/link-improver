@@ -41,13 +41,12 @@ export const cfg = await settings.init<LinkSettings, keyof typeof defaultSetting
   PLUGIN_ID,
   defaultSettings,
 );
-
-export async function start(): Promise<void> {
+export function start(): void {
   inject.before(common.messages, "sendMessage", (args) => {
     let { content } = args[1];
     const replacements = cfg.get("replacements");
 
-    if (!replacements) {
+    if (replacements.length === 0) {
       // Skip because we don't have anything to do
       return args;
     }

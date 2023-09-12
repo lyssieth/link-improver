@@ -32,6 +32,7 @@ function SettingsTable({ headers }: { headers: string[] }): React.ReactElement {
                     autoCorrect="off"
                     autoCapitalize="off"
                     autoComplete="off"
+                    spellCheck={false}
                   />
                 </td>
                 <td>
@@ -44,6 +45,7 @@ function SettingsTable({ headers }: { headers: string[] }): React.ReactElement {
                     autoCorrect="off"
                     autoCapitalize="off"
                     autoComplete="off"
+                    spellCheck={false}
                   />
                 </td>
               </tr>
@@ -109,7 +111,8 @@ export function Settings(): React.ReactElement {
       <Divider />
       <Notice messageType={Notice.Types.WARNING}>
         The "DANGER" isn't kidding. It will just remove the last element. It doesn't care, it
-        doesn't prompt. It's just gone.
+        doesn't prompt. It's just gone.<br/>
+        I suggest using a site like... <TextInput editable={false} value={"https://regex101.com/"}/>
       </Notice>
     </div>
   );
