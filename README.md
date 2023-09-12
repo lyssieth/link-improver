@@ -1,7 +1,11 @@
 # Link Improver
 
-I'm a fucker who sends messages, so I made a plugin to make some links better/shorter in case I
+I'm a person who sends messages, so I made a plugin to make some links better/shorter so I can't
 forget :3
+
+## Installation
+
+[![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=lyssieth/link-improver&source=github)
 
 ## Usage
 
@@ -17,5 +21,6 @@ FurAffinity (i'm a furry, pay me).
 
 ## TOOD
 
+- [ ] Figure out an image? What would I even... show?
 - [ ] PRETTIER SETTINGS UI
-- [ ] More betterness? (idk, give suggestions)
+- [ ] More betterness? (idk, i need suggestions)

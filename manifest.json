@@ -9,8 +9,8 @@
   },
   "version": "1.0.0",
   "updater": {
-    "type": "github",
-    "id": "lyssieth/link-improver"
+    "type": "store",
+    "id": "ee.lys.LinkImprover"
   },
   "license": "MIT",
   "type": "replugged-plugin",
