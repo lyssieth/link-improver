@@ -1,9 +1,10 @@
-import React from "react";
 import { components, util } from "replugged";
 import { LOGGER, Replacement, cfg, createReplacement } from ".";
 
 const { Text, Divider, TextInput, Notice, Button, Flex } = components;
 
+// The ugliest hack in this entire thing.
+// But, if it works, it works. It does, and I'm not changing it unless someone complains/figures out a better way/both.
 function SettingsTable({ headers }: { headers: string[] }): React.ReactElement {
   const { value, onChange } = util.useSetting(cfg, "replacements");
 
@@ -25,7 +26,7 @@ function SettingsTable({ headers }: { headers: string[] }): React.ReactElement {
                 <td>
                   <TextInput
                     editable={true}
-                    onChange={(newer) =>
+                    onChange={(newer: string) =>
                       onChange(value.map((orig) => whatTheRegex(newer, replacement, orig)))
                     }
                     value={replacement.regex.source}
@@ -38,7 +39,7 @@ function SettingsTable({ headers }: { headers: string[] }): React.ReactElement {
                 <td>
                   <TextInput
                     editable={true}
-                    onChange={(newer) =>
+                    onChange={(newer: string) =>
                       onChange(value.map((orig) => whatTheRepl(newer, replacement, orig)))
                     }
                     value={replacement.replacement}
