@@ -1,5 +1,5 @@
 import { components, util } from "replugged";
-import { LOGGER, Replacement, cfg, createReplacement } from ".";
+import { LOGGER, Replacement, cfg, createReplacement, defaultSettings } from ".";
 
 const { Text, Divider, TextInput, Notice, Button, Flex } = components;
 
@@ -67,6 +67,9 @@ function SettingsTable({ headers }: { headers: string[] }): React.ReactElement {
             onChange(value.slice(0, value.length - 1));
           }}>
           Remove Row (DANGER)
+        </Button>
+        <Button onClick={() => onChange(defaultSettings.replacements)}>
+          Reset to Default (DANGER)
         </Button>
       </Flex>
     </div>
