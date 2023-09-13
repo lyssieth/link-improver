@@ -29,7 +29,7 @@ function SettingsTable({ headers }: { headers: string[] }): React.ReactElement {
                     onChange={(newer: string) =>
                       onChange(value.map((orig) => whatTheRegex(newer, replacement, orig)))
                     }
-                    value={replacement.regex.source}
+                    value={replacement.regex}
                     autoCorrect="off"
                     autoCapitalize="off"
                     autoComplete="off"
@@ -78,15 +78,15 @@ function SettingsTable({ headers }: { headers: string[] }): React.ReactElement {
 
 function whatTheRegex(newer: string, input: Replacement, orig: Replacement): Replacement {
   LOGGER.log({ newer, input, orig });
-  if (orig.regex.source === input.regex.source && orig.replacement === input.replacement) {
-    return { regex: new RegExp(newer), replacement: input.replacement };
+  if (orig.regex === input.regex && orig.replacement === input.replacement) {
+    return { regex: newer, replacement: input.replacement };
   }
   return orig;
 }
 
 function whatTheRepl(newer: string, input: Replacement, orig: Replacement): Replacement {
   LOGGER.log({ newer, input, orig });
-  if (orig.regex.source === input.regex.source && orig.replacement === input.replacement) {
+  if (orig.regex === input.regex && orig.replacement === input.replacement) {
     return { regex: input.regex, replacement: newer };
   }
   return orig;

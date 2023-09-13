@@ -11,14 +11,14 @@ export const LOGGER = Logger.plugin(PLUGIN_ID);
 // and am calling it
 export function createReplacement(regex: string, replacement: string): Replacement {
   return {
-    regex: new RegExp(regex, "g"),
+    regex,
     replacement,
   };
 }
 
 // Kinda jank, but it works
 export interface Replacement {
-  regex: RegExp;
+  regex: string;
   replacement: string;
 }
 
@@ -31,12 +31,13 @@ export const defaultSettings = {
     // this monstrosity probably works for all cases? I sure hope so, because it works for the ones I commonly come across
     {
       regex:
-        /(?:https?:\/\/(?:www\.)?(?:twitter|x)\.com\/([a-zA-Z0-9_]+)\/status\/([0-9]+)\/?)(?:\?(?:(?:s=\d+)|(?:s=\d+&t=\w+?))\s?)?/g,
+        /(?:https?:\/\/(?:www\.)?(?:twitter|x)\.com\/([a-zA-Z0-9_]+)\/status\/([0-9]+)\/?)(?:\?(?:(?:s=\d+)|(?:s=\d+&t=\w+?))\s?)?/g
+          .source,
       replacement: "https://vxtwitter.com/$1/status/$2/",
     },
     // and this is because the normal URL doesn't embed properly in all cases. Also more of the description comes through.
     {
-      regex: /https?:\/\/(?:www\.)?furaffinity\.net\/view\/([0-9]+)\/?/g,
+      regex: /https?:\/\/(?:www\.)?furaffinity\.net\/view\/([0-9]+)\/?/g.source,
       replacement: "https://vxfuraffinity.net/view/$1/",
     },
   ],
@@ -61,9 +62,10 @@ export function start(): void {
 
       replacements.forEach(({ regex, replacement }) => {
         LOGGER.log({ regex, replacement }, "Checking against", { content });
-        const check = regex.test(content);
+        const re = new RegExp(regex, "g");
+        const check = re.test(content);
         if (check) {
-          content = content.replace(regex, replacement);
+          content = content.replace(re, replacement);
         }
       });
 
